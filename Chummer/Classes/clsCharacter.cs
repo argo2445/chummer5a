@@ -32,8 +32,6 @@ public delegate void CollegeEducationChangedHandler(Object sender);
 public delegate void SchoolOfHardKnocksChangedHandler(Object sender);
 // UncouthChanged Event Handler
 public delegate void UncouthChangedHandler(Object sender);
-// InfirmChanged Event Handler
-public delegate void InfirmChangedHandler(Object sender);
 // FriendsInHighPlacesChanged Event Handler
 public delegate void FriendsInHighPlacesChangedHandler(Object sender);
 // CharacterNameChanged Event Handler
@@ -150,7 +148,6 @@ namespace Chummer
         private bool _blnUneducated = false;
         private bool _blnUncouth = false;
         private bool _blnSchoolOfHardKnocks = false;
-        private bool _blnInfirm = false;
         private bool _blnIsCritter = false;
         private bool _blnPossessed = false;
         private bool _blnBlackMarket = false;
@@ -281,7 +278,6 @@ namespace Chummer
 		public event ExConChangedHandler ExConChanged;
 		public event FameChangedHandler FameChanged;
 		public event FriendsInHighPlacesChangedHandler FriendsInHighPlacesChanged;
-		public event InfirmChangedHandler InfirmChanged;
 		public event InitiationTabEnabledChangedHandler InitiationTabEnabledChanged;
 		public event JackOfAllTradesChangedHandler JackOfAllTradesChanged;
 		public event LightningReflexesChangedHandler LightningReflexesChanged;
@@ -526,8 +522,6 @@ namespace Chummer
             objWriter.WriteElementString("friendsinhighplaces", _blnFriendsInHighPlaces.ToString());
             // <jackofalltrades />
             objWriter.WriteElementString("jackofalltrades", _blnJackOfAllTrades.ToString());
-            // <infirm />
-            objWriter.WriteElementString("infirm", _blnInfirm.ToString());
             // <blackmarket />
             objWriter.WriteElementString("blackmarket", _blnBlackMarket.ToString());
 
@@ -1494,13 +1488,6 @@ namespace Chummer
             try
             {
                 _blnJackOfAllTrades = Convert.ToBoolean(objXmlCharacter["jackofalltrades"].InnerText);
-            }
-            catch
-            {
-            }
-            try
-            {
-                _blnInfirm = Convert.ToBoolean(objXmlCharacter["infirm"].InnerText);
             }
             catch
             {
@@ -5475,10 +5462,7 @@ namespace Chummer
                 double dblAwareness = Convert.ToDouble(TotalStreetCred, GlobalOptions.Instance.CultureInfo) + Convert.ToDouble(TotalNotoriety, GlobalOptions.Instance.CultureInfo);
                 dblAwareness = Math.Floor(dblAwareness / 3);
 
-                int intReturn = Convert.ToInt32(dblAwareness);
-
-                if (intReturn < 0)
-                    intReturn = 0;
+                int intReturn = 0;
 
                 return intReturn;
             }
@@ -5491,7 +5475,7 @@ namespace Chummer
         {
             get
             {
-                return Math.Max(CalculatedPublicAwareness + PublicAwareness, 0);
+                return PublicAwareness;
             }
         }
 
@@ -5504,7 +5488,7 @@ namespace Chummer
             {
                 string strReturn = "";
 
-                strReturn += "(" + LanguageManager.Instance.GetString("String_StreetCred") + " (" + TotalStreetCred.ToString() + ") + " + LanguageManager.Instance.GetString("String_Notoriety") + " (" + TotalNotoriety.ToString() + ")) ÷ 3";
+                //strReturn += "(" + LanguageManager.Instance.GetString("String_StreetCred") + " (" + TotalStreetCred.ToString() + ") + " + LanguageManager.Instance.GetString("String_Notoriety") + " (" + TotalNotoriety.ToString() + ")) ÷ 3";
 
                 return strReturn;
             }
@@ -7074,29 +7058,6 @@ namespace Chummer
                 {
                     if (blnOldValue != value)
                         SchoolOfHardKnocksChanged(this);
-                }
-                catch
-                {
-                }
-            }
-        }
-        /// <summary>
-        /// Whether or not Infirm is enabled.
-        /// </summary>
-        public bool Infirm
-        {
-            get
-            {
-                return _blnInfirm;
-            }
-            set
-            {
-                bool blnOldValue = _blnInfirm;
-                _blnInfirm = value;
-                try
-                {
-                    if (blnOldValue != value)
-                        InfirmChanged(this);
                 }
                 catch
                 {
