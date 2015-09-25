@@ -9217,7 +9217,7 @@ namespace Chummer
 				{
 					string strThisQuality = "";
 					//string strQualityName = strQuality.Substring(0, strQuality.IndexOf('[') - 1);
-                    string strQualityName = strQuality.ToString();
+                    string strQualityName = strQuality.Name;
                     objNode = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + strQualityName + "\"]");
 
 

@@ -24454,7 +24454,7 @@ namespace Chummer
                     {
                         if (strQualities.Length > 0)
                             strQualities += ", ";
-                        string strQualityName = strQuality.ToString();
+                        string strQualityName = strQuality.Name;
                         objNode = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + strQualityName + "\"]");
                         XmlNode nodCost = objNode["lifestylecost"];
                         if (nodCost != null)
