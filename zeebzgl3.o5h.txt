@@ -1,0 +1,35 @@
+﻿Merge branch 'master' of git://github.com/chummer5a/chummer5a into chummer5a-master
+
+Conflicts:
+	Chummer/frmCareer.cs
+#
+# It looks like you may be committing a merge.
+# If this is not correct, please remove the file
+#	.git/MERGE_HEAD
+# and try again.
+
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+# On branch chummer5a-master
+# All conflicts fixed but you are still merging.
+#
+# Changes to be committed:
+#	modified:   Chummer/Admin/manifestdata.xml
+#	modified:   Chummer/Character Creation/frmCreate.Designer.cs
+#	modified:   Chummer/Character Creation/frmCreate.cs
+#	modified:   Chummer/Classes/clsCharacter.cs
+#	modified:   Chummer/Classes/clsEquipment.cs
+#	modified:   Chummer/Classes/clsImprovement.cs
+#	modified:   Chummer/Classes/clsListItems.cs
+#	modified:   Chummer/changelog.txt
+#	modified:   Chummer/data/gear.xml
+#	modified:   Chummer/data/lifemodules.xml
+#	modified:   Chummer/data/qualities.xml
+#	modified:   Chummer/data/spells.xml
+#	modified:   Chummer/frmCareer.cs
+#	modified:   Chummer/frmSelectLifestyleAdvanced.Designer.cs
+#	modified:   Chummer/frmSelectLifestyleAdvanced.cs
+#	modified:   Chummer/frmSelectQuality.cs
+#
+
