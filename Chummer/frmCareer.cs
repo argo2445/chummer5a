@@ -23911,22 +23911,12 @@ namespace Chummer
                     {
                         if (strQualities.Length > 0)
                             strQualities += ", ";
-						string strQualityName = objQuality.DisplayName;
-						objNode = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + objQuality.Name + "\"]");
-						XmlNode nodMultiplier = objNode["multiplier"];
-						if (objNode["translate"] != null)
-						{
-							strQualities += objNode["translate"].InnerText;
-						}
-						else
-						{
-							strQualities += objNode["name"].InnerText;
-						}
-						if (objQuality.Extra.Length > 0)
-						{
-							strQualities += " (" + objQuality.Extra + ")";
-						}
-						if (nodMultiplier != null)
+
+                        string strQualityName = strQuality.Name;
+                        objNode = objXmlDocument.SelectSingleNode("/chummer/qualities/quality[name = \"" + strQualityName + "\"]");
+                        XmlNode nodCost = objNode["lifestylecost"];
+                        if (nodCost != null)
+
                         {
 							string strMultiplier = nodMultiplier.InnerText;
 							int intCost = Convert.ToInt32(strMultiplier);
